@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 定义 User Bean -->
+	<bean id="user" class="com.shiwen.bean.User">
+		<!-- 如果 User 类有构造函数参数或属性，可以在这里配置 -->
+		<!-- 例如：<property name="属性名" value="属性值"/> -->
+		<constructor-arg name="name" value="shiwen"/>
+		<constructor-arg name="age" value="18"/>
+		<constructor-arg name="sex" value="男"/>
+		<constructor-arg name="address" value="北京"/>
+<!--		<property name="address" value="上海"></property>-->
+	</bean>
+</beans>
