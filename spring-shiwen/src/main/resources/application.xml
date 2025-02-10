@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans
-                           http://www.springframework.org/schema/beans/spring-beans.xsd">
-
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd">
+	<!--注册自定义的 BeanFactoryPostProcessor -->
+<!--	<bean class="com.shiwen.MyBeanFactooryPostProcessor"/>-->
+	<context:component-scan base-package="com.shiwen"/>
 	<!-- 定义 User Bean -->
 	<bean id="user" class="com.shiwen.bean.User">
 		<!-- 如果 User 类有构造函数参数或属性，可以在这里配置 -->
@@ -13,5 +18,8 @@
 		<constructor-arg name="sex" value="男"/>
 		<constructor-arg name="address" value="北京"/>
 <!--		<property name="address" value="上海"></property>-->
+	</bean>
+	<bean id="student" class="com.shiwen.bean.Student" init-method="init">
+		<property name="name" value="上海"></property>
 	</bean>
 </beans>

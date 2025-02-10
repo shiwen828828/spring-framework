@@ -9,5 +9,6 @@ public class AnnoationTest {
 		AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
 		User bean = annotationConfigApplicationContext.getBean(User.class);
 		System.out.println(bean);
+		System.out.println(bean.getApplicationContext());
 	}
 }

@@ -1,11 +1,16 @@
 package com.shiwen.bean;
 
 
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
-@Component
-public class User {
+import javax.annotation.PostConstruct;
+
+//@Component
+public class User implements ApplicationContextAware {
 
 	@Value("shiwen")
 	private String name;
@@ -19,6 +24,8 @@ public class User {
 
 	@Value("北京")
 	private String address;
+
+	private ApplicationContext applicationContext;
 
 	public User() {
 	}
@@ -62,8 +69,22 @@ public class User {
 		this.address = address;
 	}
 
+	public ApplicationContext getApplicationContext() {
+		return applicationContext;
+	}
+
 	@Override
 	public String toString() {
 		return "User{" + "name='" + name + '\'' + ", age=" + age + ", sex='" + sex + '\'' + ", address='" + address + '\'' + '}';
+	}
+
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+		this.applicationContext = applicationContext;
+	}
+
+	@PostConstruct
+	public void init() {
+		System.out.println("user bean init method");
 	}
 }
