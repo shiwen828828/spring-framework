@@ -7,7 +7,7 @@
                            http://www.springframework.org/schema/context
                            http://www.springframework.org/schema/context/spring-context.xsd">
 	<!--注册自定义的 BeanFactoryPostProcessor -->
-<!--	<bean class="com.shiwen.MyBeanFactooryPostProcessor"/>-->
+<!--	<bean class="com.shiwen.MyBeanFactoryPostProcessor"/>-->
 	<context:component-scan base-package="com.shiwen"/>
 	<!-- 定义 User Bean -->
 	<bean id="user" class="com.shiwen.bean.User">

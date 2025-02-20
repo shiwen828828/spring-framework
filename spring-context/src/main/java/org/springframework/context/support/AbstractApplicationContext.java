@@ -292,6 +292,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 * a custom {@link ConfigurableEnvironment} implementation.
 	 */
 	protected ConfigurableEnvironment createEnvironment() {
+		// 这里在创建一个StandardEnvironment对象 的时候先执行了父类的构造器 构造器中 customizePropertySources 方法 在这个实现类中
 		return new StandardEnvironment();
 	}
 
@@ -486,7 +487,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 			prepareRefresh();
 
 			// Tell the subclass to refresh the internal bean factory.
-            // 初始化 BeanFactory ，并进行 XML 文件读取
+            // 初始化 BeanFactory ，并进行 XML 文件读取 最重要的是BeanDefinition
 			ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();
 
 			// Prepare the bean factory for use in this context.
@@ -510,7 +511,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
                 registerBeanPostProcessors(beanFactory);
 
 				// Initialize message source for this context.
-                // TODO 芋艿，先暂时不看 为 Context 初始化 Message 源，即不同语言的消息体，国际化处理
+                //先暂时不看 为 Context 初始化 Message 源，即不同语言的消息体，国际化处理
 				initMessageSource();
 
 				// Initialize event multicaster for this context.
@@ -518,7 +519,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				initApplicationEventMulticaster();
 
 				// Initialize other special beans in specific context subclasses.
-                // 留给子类，来初始化其他特殊的 Bean 对象们
+                // 留给子类，来初始化其他特殊的 Bean 对象们 mvc 层面这里会启动tomcat
 				onRefresh();
 
 				// Check for listener beans and register them.
@@ -585,7 +586,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		// Allow for the collection of early ApplicationEvents,
 		// to be published once the multicaster is available...
         // 初始化早起的 ApplicationEvent 集合。
-        // 因为此事，ApplicationMulticaster 还没创建好。
+        // 因为此时，ApplicationMulticaster 还没创建好。
 		this.earlyApplicationEvents = new LinkedHashSet<>();
 	}
 

@@ -166,7 +166,7 @@ final class PostProcessorRegistrationDelegate {
         // 没有顺序
         List<String> nonOrderedPostProcessorNames = new ArrayList<>();
 		for (String ppName : postProcessorNames) {
-		    // 跳过，已经处理的
+		    // 跳过，已经处理的 避免重复处理实现过BeanDefinitionRegistryPostProcessor 接口的postProcessBeanFactory 方法
 			if (processedBeans.contains(ppName)) {
 				// skip - already processed in first phase above
 			}
