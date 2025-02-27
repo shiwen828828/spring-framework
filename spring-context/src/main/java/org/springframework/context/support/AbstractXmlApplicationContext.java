@@ -45,6 +45,7 @@ import java.io.IOException;
  */
 public abstract class AbstractXmlApplicationContext extends AbstractRefreshableConfigApplicationContext {
 
+	// 设置xml文件的验证标志 默认是true
 	private boolean validating = true;
 
 
@@ -80,7 +81,7 @@ public abstract class AbstractXmlApplicationContext extends AbstractRefreshableC
 	@Override
 	protected void loadBeanDefinitions(DefaultListableBeanFactory beanFactory) throws BeansException, IOException {
 		// Create a new XmlBeanDefinitionReader for the given BeanFactory.
-        // 创建 XmlBeanDefinitionReader 对象
+        // 创建 XmlBeanDefinitionReader 对象 并通过回调设置到beanFactory 中
 		XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
 
 		// Configure the bean definition reader with this context's
@@ -88,6 +89,7 @@ public abstract class AbstractXmlApplicationContext extends AbstractRefreshableC
         // 对 XmlBeanDefinitionReader 进行环境变量的设置
 		beanDefinitionReader.setEnvironment(this.getEnvironment());
 		beanDefinitionReader.setResourceLoader(this);
+		// 读取本地xsd 或者dtd 的路径
 		beanDefinitionReader.setEntityResolver(new ResourceEntityResolver(this));
 
 		// Allow a subclass to provide custom initialization of the reader,
@@ -96,6 +98,7 @@ public abstract class AbstractXmlApplicationContext extends AbstractRefreshableC
 		initBeanDefinitionReader(beanDefinitionReader);
 
 		// 从 Resource 们中，加载 BeanDefinition 们
+		// 开始完成Beandefinition 的加载
 		loadBeanDefinitions(beanDefinitionReader);
 	}
 

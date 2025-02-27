@@ -397,6 +397,8 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 			throws BeanDefinitionStoreException {
 		try {
             // 获取 XML Document 实例
+			// 这个doc 就是读取配置文件之后里面 都是一些Node 的节点
+			// String[]-string-Resource[]-resource-inpustream-inputResource
 			Document doc = doLoadDocument(inputSource, resource);
             // 根据 Document 实例，注册 Bean 信息
 			int count = registerBeanDefinitions(doc, resource);
@@ -567,6 +569,7 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 	 */
 	protected NamespaceHandlerResolver createDefaultNamespaceHandlerResolver() {
 		ClassLoader cl = (getResourceLoader() != null ? getResourceLoader().getClassLoader() : getBeanClassLoader());
+		// 创建默认的命名空间 handler resolver
 		return new DefaultNamespaceHandlerResolver(cl);
 	}
 

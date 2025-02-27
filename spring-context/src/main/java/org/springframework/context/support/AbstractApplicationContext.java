@@ -133,6 +133,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	protected final Log logger = LogFactory.getLog(getClass());
 
 	/** Unique id for this context, if any. */
+	// 创建上下文的唯一标识
 	private String id = ObjectUtils.identityToString(this);
 
 	/** Display name. */
@@ -281,6 +282,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	@Override
 	public ConfigurableEnvironment getEnvironment() {
 		if (this.environment == null) {
+			// 设置系统环境值 systemEnvironment systemProperties
 			this.environment = createEnvironment();
 		}
 		return this.environment;
@@ -576,6 +578,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 		// Initialize any placeholder property sources in the context environment
         // 初始化 PropertySource ，由子类覆盖实现。默认实现为空。
+		// 比如可以自定义实现一些自定义的属性值
 		initPropertySources();
 
 		// Validate that all properties marked as required are resolvable

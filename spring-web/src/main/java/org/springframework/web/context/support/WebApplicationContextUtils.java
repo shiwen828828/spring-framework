@@ -295,6 +295,7 @@ public abstract class WebApplicationContextUtils {
 
 		Assert.notNull(sources, "'propertySources' must not be null");
 		String name = StandardServletEnvironment.SERVLET_CONTEXT_PROPERTY_SOURCE_NAME;
+		// 为servlet 配置初始化参数的 比如web.xml 中的        <init-param> 标签
 		if (servletContext != null && sources.contains(name) && sources.get(name) instanceof StubPropertySource) {
 			sources.replace(name, new ServletContextPropertySource(name, servletContext));
 		}

@@ -151,7 +151,7 @@ public class DefaultBeanDefinitionDocumentReader implements BeanDefinitionDocume
 			}
 		}
 
-        // 解析前处理
+        // 解析前处理 springmvc 会用到
 		preProcessXml(root);
         // 解析
 		parseBeanDefinitions(root, this.delegate);
@@ -332,7 +332,7 @@ public class DefaultBeanDefinitionDocumentReader implements BeanDefinitionDocume
 		    // 进行自定义标签处理
 			bdHolder = delegate.decorateBeanDefinitionIfRequired(ele, bdHolder);
 			try {
-			    // 进行 BeanDefinition 的注册
+			    // 进行 BeanDefinition 的注册 注册到defaultbeanFactory 中
 				// Register the final decorated instance.
 				BeanDefinitionReaderUtils.registerBeanDefinition(bdHolder, getReaderContext().getRegistry());
 			} catch (BeanDefinitionStoreException ex) {

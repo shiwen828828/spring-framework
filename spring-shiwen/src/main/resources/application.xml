@@ -22,4 +22,7 @@
 	<bean id="student" class="com.shiwen.bean.Student" init-method="init">
 		<property name="name" value="上海"></property>
 	</bean>
+
+<!--	Lookup-method 主要用于解决单例 Bean 依赖原型 Bean 的问题，让单例 Bean 可以在需要时动态获取新的原型 Bean 实例。
+	Replace-method 用于在运行时动态替换 Bean 中某个方法的实现，通过实现 MethodReplacer 接口提供新的方法逻辑。-->
 </beans>

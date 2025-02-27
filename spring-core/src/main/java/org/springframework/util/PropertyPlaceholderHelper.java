@@ -136,7 +136,7 @@ public class PropertyPlaceholderHelper {
 							"Circular placeholder reference '" + originalPlaceholder + "' in property definitions");
 				}
 				// Recursive invocation, parsing placeholders contained in the placeholder key.
-                // 解析占位符键中包含的占位符，真正的值
+                // 递归调用 解析占位符键中包含的占位符，真正的值
 				placeholder = parseStringValue(placeholder, placeholderResolver, visitedPlaceholders);
 				// Now obtain the value for the fully resolved key...
                 // 从 Properties 中获取 placeHolder 对应的值 propVal

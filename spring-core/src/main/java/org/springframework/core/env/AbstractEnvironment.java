@@ -392,6 +392,7 @@ public abstract class AbstractEnvironment implements ConfigurableEnvironment {
 	@SuppressWarnings({"unchecked", "rawtypes"})
 	public Map<String, Object> getSystemProperties() {
 		try {
+			// 从系统中获取properties 属性  主要是JVM 的属性
 			return (Map) System.getProperties();
 		}
 		catch (AccessControlException ex) {
@@ -421,6 +422,7 @@ public abstract class AbstractEnvironment implements ConfigurableEnvironment {
 			return Collections.emptyMap();
 		}
 		try {
+			// 获取系统环境变量
 			return (Map) System.getenv();
 		}
 		catch (AccessControlException ex) {
