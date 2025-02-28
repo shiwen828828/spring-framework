@@ -1,4 +1,4 @@
-package com.shiwen;
+package com.shiwen.selftag;
 
 import com.shiwen.bean.CustomUser;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;

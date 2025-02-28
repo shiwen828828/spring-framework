@@ -1,4 +1,4 @@
-package com.shiwen;
+package com.shiwen.selftag;
 
 import org.springframework.beans.factory.xml.NamespaceHandlerSupport;
 
