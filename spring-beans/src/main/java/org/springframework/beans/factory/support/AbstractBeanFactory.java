@@ -1126,6 +1126,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 	 */
 	protected void initBeanWrapper(BeanWrapper bw) {
 		bw.setConversionService(getConversionService());
+		// 注册自定义的PropertyEditor
 		registerCustomEditors(bw);
 	}
 
@@ -1146,6 +1147,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 		if (!this.propertyEditorRegistrars.isEmpty()) {
 			for (PropertyEditorRegistrar registrar : this.propertyEditorRegistrars) {
 				try {
+					// 注册自定义的PropertyEditor
 					registrar.registerCustomEditors(registry);
 				}
 				catch (BeanCreationException ex) {
